@@ -1,0 +1,17 @@
+# data
+data/
+
+# tars and zips
+*.gz
+*.xz
+*.zip
+*.tar
+
+# models
+*.pth
+
+# __pycache__
+**/__pycache__/
+
+# environment
+venv/
