@@ -1,7 +1,7 @@
 import torch
 import cv2
 import mediapipe as mp
-import SignLangToAlphabets
+import CNN_model
 import numpy as np
 import time
 
@@ -9,7 +9,7 @@ input_size = 42
 hidden_size = 35
 num_classes = 3
 
-model = SignLangToAlphabets.ConvNet()
+model = CNN_model.ConvNet()
 model.load_state_dict(torch.load('cnn.pth'))
 model.eval()
 
