@@ -22,9 +22,9 @@ Collaboratively developed by:
 
 - Aditya Raj
 - Hruday Nandan Tudu
-- M Hrushikesh Reddy
+- Modulla Hrushikesh Reddy
 - Shikhar Parmar
-- Venkata Panees Dugineni
+- Duggineni Venkata Paneesh
 
 ## Installation
 
@@ -52,19 +52,22 @@ python collect_images.py
 ```
 
 To begin creating dataset press 'S', then press 'C' to capture an image.
-To extract the points from images for FNN model, we additional run
+
+To extract the joints from hand images for FNN model use `create_dataset.py`
 
 ```bash
 python create_dataset.py
 ```
+
 ### Training the model
 
-For training the model using CNN use,
+For training the CNN model use `CNN_model.py`,
 
 ```bash
 python CNN_model.py
 ```
-For training the model using FNN use,
+
+For training the FNN model use `FNN_model.py`,
 
 ```bash
 python FNN_model.py
@@ -72,12 +75,13 @@ python FNN_model.py
 
 ### Using live video feed
 
-For prediction using CNN, run the `inference_classifier_CNN.py` to start the live feed. Show sign language with one hand.
+For prediction using CNN, run the `inference_classifier_CNN.py` to start the live feed and show sign language with one hand.
 
 ```bash
 python inference_classifier_CNN.py
 ```
-For prediction using FNN, run the `inference_classifier_FNN.py` to start the live feed. Show sign language with one hand.
+
+For prediction using FNN, run the `inference_classifier_FNN.py` to start the live feed and show sign language with one hand.
 
 ```bash
 python inference_classifier_FNN.py
