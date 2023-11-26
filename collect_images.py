@@ -19,6 +19,17 @@ if not os.path.exists(DATA_DIR):
 classes_list = [chr(i) for i in range(97, 97+26)]
 dataset_size = 50
 
+# Font settings
+font = cv2.FONT_HERSHEY_COMPLEX
+font_scale = 0.75
+font_thickness = 3
+font_color = (128, 0, 0)  # Green in BGR format
+line_height = 30  # Adjust this value to set the vertical spacing between lines
+
+# Prompt
+prompt = 'Ready? Press "S" ! :)'
+x, y = 100, 50
+
 cap = cv2.VideoCapture(0)
 for j in classes_list:
     if not os.path.exists(os.path.join(DATA_DIR, str(j))):
@@ -29,18 +40,19 @@ for j in classes_list:
     while True:
         ret, frame = cap.read()
         frame = cv2.flip(frame, 1)
-        cv2.putText(frame, 'Ready? Press "Q" ! :)', (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3,
-                    cv2.LINE_AA)
+        cv2.putText(frame, prompt, (x, y), font, font_scale,
+                    font_color, font_thickness, cv2.LINE_AA)
         cv2.imshow('frame', frame)
-        if cv2.waitKey(25) == ord('q'):
+        if cv2.waitKey(25) == ord('s'):
             break
 
     for counter in tqdm(range(dataset_size), desc="Dataset created", total=dataset_size):
         while MANUAL_CAPTURE:
             ret, frame = cap.read()
             frame = cv2.flip(frame, 1)
-            cv2.putText(frame, 'To capture Press "C" ! :)', (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3,
-                        cv2.LINE_AA)
+            prompt = 'Press "C" to capture!'
+            cv2.putText(frame, prompt, (x, y), font, font_scale,
+                        font_color, font_thickness, cv2.LINE_AA)
             cv2.imshow('frame', frame)
             if cv2.waitKey(25) == ord('c'):
                 break
