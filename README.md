@@ -51,7 +51,7 @@ By creating your own dataset using `collect_images.py`.
 python collect_images.py
 ```
 
-Capture images for each alphabet by pressing 'Q'.
+To begin creating dataset press 'S', then press 'C' to capture an image.
 
 ### Training the model
 
