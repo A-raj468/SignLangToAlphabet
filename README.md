@@ -13,6 +13,7 @@ This project utilizes Convolutional Neural Networks (CNN) and custom data creati
     - [Training the model](#training-the-model)
     - [Using live video feed](#using-live-video-feed)
   - [Libraries Used](#libraries-used)
+  - [References](#references)
 
 ## Introduction
 
@@ -93,3 +94,7 @@ Quit by presing 'Q'.
 
 - PyTorch
 - Tqdm
+
+## References
+
+-
