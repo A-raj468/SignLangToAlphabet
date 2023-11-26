@@ -41,7 +41,11 @@ pip install -r requirements.txt
 
 ### Creating the dataset
 
-Begin by creating your dataset using `collect_images.py`.
+Begin by downloading the [dataset](https://iitbacin-my.sharepoint.com/:f:/g/personal/210050005_iitb_ac_in/Evck4s6jkDpAuCZZm_heMEkBUh4TP8v8o_jw1ne6FMt0bQ?e=8vN32T).
+
+Or
+
+By creating your own dataset using `collect_images.py`.
 
 ```bash
 python collect_images.py
@@ -59,7 +63,13 @@ python SignLangToAlphabet.py
 
 ### Using live video feed
 
-Run the `inference_classifier.py` to start the live feed. Show sign language with one hand. Quit by presing 'Q'.
+Run the `inference_classifier.py` to start the live feed. Show sign language with one hand.
+
+```bash
+python inference_classifier.py
+```
+
+Quit by presing 'Q'.
 
 ## Libraries Used
 
