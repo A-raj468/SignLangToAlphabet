@@ -12,7 +12,7 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
 MANUAL_CAPTURE = True
 
-DATA_DIR = './data'
+DATA_DIR = './data_FNN'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
@@ -27,11 +27,11 @@ font_color = (128, 0, 0)  # Green in BGR format
 line_height = 30  # Adjust this value to set the vertical spacing between lines
 
 # Prompt
-prompt = 'Ready? Press "S" ! :)'
 x, y = 100, 50
 
 cap = cv2.VideoCapture(0)
 for j in classes_list:
+    prompt = 'Ready? Press "S" ! :)'
     if not os.path.exists(os.path.join(DATA_DIR, str(j))):
         os.makedirs(os.path.join(DATA_DIR, str(j)))
 
