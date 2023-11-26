@@ -72,10 +72,15 @@ python FNN_model.py
 
 ### Using live video feed
 
-Run the `inference_classifier_CNN.py` to start the live feed. Show sign language with one hand.
+For prediction using CNN, run the `inference_classifier_CNN.py` to start the live feed. Show sign language with one hand.
 
 ```bash
 python inference_classifier_CNN.py
+```
+For prediction using FNN, run the `inference_classifier_FNN.py` to start the live feed. Show sign language with one hand.
+
+```bash
+python inference_classifier_FNN.py
 ```
 
 Quit by presing 'Q'.
