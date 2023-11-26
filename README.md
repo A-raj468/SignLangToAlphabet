@@ -39,9 +39,9 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Creating the dataset
+### Dataset
 
-Begin by downloading the [dataset](https://iitbacin-my.sharepoint.com/:f:/g/personal/210050005_iitb_ac_in/Evck4s6jkDpAuCZZm_heMEkBUh4TP8v8o_jw1ne6FMt0bQ?e=8vN32T).
+You can begin by downloading the [dataset](https://iitbacin-my.sharepoint.com/:f:/g/personal/210050005_iitb_ac_in/Evck4s6jkDpAuCZZm_heMEkBUh4TP8v8o_jw1ne6FMt0bQ?e=8vN32T).
 
 Or
 
@@ -52,13 +52,22 @@ python collect_images.py
 ```
 
 To begin creating dataset press 'S', then press 'C' to capture an image.
+To extract the points from images for FNN model, we additional run
 
+```bash
+python create_dataset.py
+```
 ### Training the model
 
-Train the model using `CNN_model.py`.
+For training the model using CNN use,
 
 ```bash
 python CNN_model.py
+```
+For training the model using FNN use,
+
+```bash
+python FNN_model.py
 ```
 
 ### Using live video feed
