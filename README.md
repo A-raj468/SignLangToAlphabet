@@ -55,18 +55,18 @@ To begin creating dataset press 'S', then press 'C' to capture an image.
 
 ### Training the model
 
-Train the model using `SignLangToAlphabet.py`.
+Train the model using `CNN_model.py`.
 
 ```bash
-python SignLangToAlphabet.py
+python CNN_model.py
 ```
 
 ### Using live video feed
 
-Run the `inference_classifier.py` to start the live feed. Show sign language with one hand.
+Run the `inference_classifier_CNN.py` to start the live feed. Show sign language with one hand.
 
 ```bash
-python inference_classifier.py
+python inference_classifier_CNN.py
 ```
 
 Quit by presing 'Q'.
