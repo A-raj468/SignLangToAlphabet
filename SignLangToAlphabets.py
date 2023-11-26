@@ -12,28 +12,6 @@ from tqdm import tqdm
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-# # Hyper-parameters
-# num_epochs = 20
-# batch_size = 4
-# learning_rate = 0.001
-
-# transform = transforms.Compose([
-#     transforms.Resize((50,50)),
-#     transforms.ToTensor(),
-# ])
-
-# dataset_root = 'SignLanguageforAlphabets'
-# dataset = torchvision.datasets.ImageFolder(root=dataset_root, transform=transform)
-
-# train_data = []
-# test_data = []
-
-# # Define the fraction of data to keep for training (e.g., 80%)
-# train_fraction = 0.9
-
-# for class_idx in range(len(dataset.classes)):
-#     class_samples = [i for i, (_, label) in enumerate(dataset.samples) if label == class_idx]
-
 
 class ConvNet(nn.Module):
     def __init__(self):
@@ -65,8 +43,9 @@ class ConvNet(nn.Module):
 
 def train_model(train_loader, num_epochs, criterion, optimizer, model):
     n_total_steps = len(train_loader)
-    for epoch in tqdm(range(num_epochs), desc="Epochs"):
-        for i, (images, labels) in tqdm(enumerate(train_loader), total=len(train_loader)):
+    for epoch in tqdm(range(num_epochs), desc="Epochs", total=num_epochs, leave=True):
+        loss = None
+        for i, (images, labels) in tqdm(enumerate(train_loader), desc=f"Epoch {epoch+1}/{num_epochs}", total=n_total_steps, leave=False):
             images = images.to(device)
             labels = labels.to(device)
             # Forward pass
@@ -77,9 +56,8 @@ def train_model(train_loader, num_epochs, criterion, optimizer, model):
             loss.backward()
             optimizer.step()
 
-            # if (i+1) % 150 == 0:
-            #     print(
-            #         f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{n_total_steps}], Loss: {loss.item():.4f}')
+        tqdm.write(
+            f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
 
     print('Finished Training')
     PATH = './cnn.pth'
@@ -110,7 +88,7 @@ def evaluate_model(test_loader, model, classes):
         acc = 100.0 * n_correct / n_samples
         print(f'Accuracy of the network: {acc} %')
 
-        for i in range(2):
+        for i in range(len(classes)):
             acc = 100.0 * n_class_correct[i] / n_class_samples[i]
             print(f'Accuracy of {classes[i]}: {acc} %')
 
@@ -144,7 +122,7 @@ if __name__ == "__main__":
         split_index = int(len(class_samples) * train_fraction)
         train_data += class_samples[:split_index]
         test_data += class_samples[split_index:]
-    # print(train_data)
+
     # Create DataLoader for train and test datasets
     train_dataset = torch.utils.data.Subset(dataset, train_data)
     test_dataset = torch.utils.data.Subset(dataset, test_data)
@@ -157,8 +135,7 @@ if __name__ == "__main__":
                                               shuffle=False)
 
     classes = {0: "a", 1: "b", 2: "c", 3: "d", 4: "e", 5: "f", 6: "g", 7: "h", 8: "i", 9: "j", 10: "k", 11: "l", 12: "m", 13: "n",
-               14: "o", 15: "p", 16: "q", 17: "r", 18: "s", 19: "t", 20: "u", 21: "unkowen", 22: "v", 23: "w", 24: "x", 25: "y", 26: "z"}
-    # classes = {0: "a", 1: "l"}
+               14: "o", 15: "p", 16: "q", 17: "r", 18: "s", 19: "t", 20: "u", 21: "v", 22: "w", 23: "x", 24: "y", 25: "z"}
 
     model = ConvNet().to(device)
 
