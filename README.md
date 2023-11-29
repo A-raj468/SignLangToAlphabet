@@ -97,4 +97,4 @@ Quit by presing 'Q'.
 
 ## References
 
--
+- [Make dataset](https://github.com/computervisioneng/sign-language-detector-python)
